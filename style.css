@@ -1,0 +1,181 @@
+/* ============================================================
+   DIVISION J — TOASTMASTERS DISTRICT 51
+   Brand-compliant stylesheet
+   Palette + fonts per Toastmasters International Brand Manual:
+   - Loyal Blue #004165 | True Maroon #772432
+   - Cool Gray #A9B2B1  | Happy Yellow #F2DF74
+   - Headings: Montserrat (free alternate for Gotham)
+   - Body: Source Sans 3 (free alternate for Myriad Pro)
+   ============================================================ */
+
+:root {
+  --loyal-blue: #004165;
+  --true-maroon: #772432;
+  --cool-gray: #A9B2B1;
+  --happy-yellow: #F2DF74;
+  --ink: #1d2529;
+  --paper: #ffffff;
+  --mist: #f2f6f8;
+  --rule: #dde5e9;
+  --max: 1080px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  color: var(--loyal-blue);
+  line-height: 1.2;
+}
+
+a { color: var(--true-maroon); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--loyal-blue); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--happy-yellow);
+  outline-offset: 2px;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--loyal-blue);
+  color: #fff;
+  border-bottom: 4px solid var(--true-maroon);
+}
+.header-inner {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 0; flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
+/* Brand rule: official logo unaltered, clear space respected;
+   Division name is SEPARATE TEXT — never merged into a lockup. */
+.brand img { height: 52px; width: auto; display: block; background: #fff; border-radius: 4px; padding: 5px; }
+.brand-text { color: #fff; }
+.brand-text .division { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: 0.02em; display: block; }
+.brand-text .district { font-size: 0.85rem; color: #cfe0ea; display: block; }
+
+/* Mobile nav — pure CSS (no JS, better for crawlers) */
+.nav-toggle-box { display: none; }
+.nav-toggle {
+  display: none; margin-left: auto; color: #fff;
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 0.95rem;
+  border: 1px solid rgba(255,255,255,0.5); border-radius: 6px;
+  padding: 0.4rem 0.8rem; cursor: pointer;
+}
+.site-nav { margin-left: auto; }
+.site-nav ul { list-style: none; display: flex; gap: 1.4rem; }
+.site-nav a {
+  color: #fff; text-decoration: none;
+  font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 0.92rem;
+  padding-bottom: 3px; border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] { border-bottom-color: var(--happy-yellow); color: #fff; }
+
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-block; }
+  .site-nav { display: none; width: 100%; margin: 0.5rem 0 0.25rem; }
+  .site-nav ul { flex-direction: column; gap: 0.75rem; }
+  .nav-toggle-box:checked ~ .site-nav { display: block; }
+}
+
+/* ---------- Hero ---------- */
+.hero { background: var(--mist); border-bottom: 1px solid var(--rule); padding: 3.5rem 0 3rem; }
+.hero .eyebrow {
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 0.8rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--true-maroon);
+}
+.hero h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); font-weight: 800; margin: 0.5rem 0 1rem; max-width: 20ch; }
+.hero p.lede { font-size: 1.2rem; max-width: 62ch; color: #38454c; }
+.hero .cta-row { margin-top: 1.75rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block; text-decoration: none;
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 0.95rem;
+  padding: 0.75rem 1.4rem; border-radius: 6px;
+}
+.btn-primary { background: var(--true-maroon); color: #fff; }
+.btn-primary:hover { background: var(--loyal-blue); color: #fff; }
+.btn-ghost { border: 2px solid var(--loyal-blue); color: var(--loyal-blue); }
+.btn-ghost:hover { background: var(--loyal-blue); color: #fff; }
+
+/* ---------- Sections ---------- */
+.section { padding: 3.25rem 0; }
+.section.alt { background: var(--mist); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.section h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin-bottom: 0.4rem; }
+.section .section-sub { color: #4a5960; max-width: 68ch; margin-bottom: 1.75rem; }
+
+/* ---------- Signature: the Q&A ledger ----------
+   The site's design language IS its AEO strategy:
+   questions carry a maroon Q-rule; answers carry a yellow answer-bar.
+   Answer blocks are written to be quotable by AI answer engines. */
+.qa { border-top: 1px solid var(--rule); }
+.qa + .qa { margin-top: 0; }
+.qa h3 {
+  font-size: 1.15rem; font-weight: 700; padding: 1.2rem 0 0.35rem;
+  display: flex; gap: 0.75rem; align-items: baseline;
+}
+.qa h3::before {
+  content: "Q"; font-weight: 800; color: var(--true-maroon);
+  font-size: 0.95rem; border: 2px solid var(--true-maroon);
+  border-radius: 50%; width: 1.6rem; height: 1.6rem; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.qa .answer {
+  border-left: 5px solid var(--happy-yellow);
+  padding: 0.15rem 0 1.2rem 1.05rem; max-width: 70ch;
+}
+
+/* ---------- Cards (clubs, sessions, leaders) ---------- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1.25rem; }
+.card {
+  background: #fff; border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1.4rem 1.3rem; box-shadow: 0 1px 3px rgba(0,65,101,0.06);
+}
+.card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
+.card .meta {
+  font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 0.72rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--true-maroon);
+  display: block; margin-bottom: 0.45rem;
+}
+.card p { font-size: 0.95rem; color: #3c4a51; }
+.card ul { font-size: 0.95rem; color: #3c4a51; padding-left: 1.1rem; margin-top: 0.4rem; }
+
+/* ---------- Definition list (quick facts — highly extractable) ---------- */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem 2rem; }
+.facts div { border-top: 3px solid var(--loyal-blue); padding-top: 0.6rem; }
+.facts dt { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--true-maroon); }
+.facts dd { font-size: 1rem; margin-top: 0.2rem; }
+
+/* ---------- Tables ---------- */
+table { width: 100%; border-collapse: collapse; font-size: 0.97rem; }
+th { text-align: left; font-family: "Montserrat", sans-serif; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--loyal-blue); border-bottom: 2px solid var(--loyal-blue); padding: 0.5rem 0.6rem; }
+td { border-bottom: 1px solid var(--rule); padding: 0.55rem 0.6rem; vertical-align: top; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--loyal-blue); color: #cfe0ea; margin-top: 3rem; font-size: 0.9rem; }
+.footer-inner { padding: 2.2rem 0 2.4rem; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.site-footer h4 { color: #fff; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.site-footer a { color: #fff; }
+.site-footer .disclaimer { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 1rem; font-size: 0.8rem; color: #b8cdd9; }
+
+/* ---------- Utility ---------- */
+.notice {
+  background: #fdf9e3; border: 1px solid #e8dc9a; border-left: 5px solid var(--happy-yellow);
+  border-radius: 6px; padding: 0.9rem 1.1rem; font-size: 0.95rem; max-width: 75ch;
+}
+.placeholder { color: #7c8a91; font-style: italic; }
